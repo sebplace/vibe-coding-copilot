@@ -100,8 +100,13 @@ document.addEventListener('DOMContentLoaded', function () {
       el.style.width = target + '%';
       return;
     }
+    // The markup ships with the final width so the bar is still correct without
+    // JavaScript; collapse it first, then grow it back for the animation.
+    el.style.width = '0%';
     window.requestAnimationFrame(function () {
-      el.style.width = target + '%';
+      window.requestAnimationFrame(function () {
+        el.style.width = target + '%';
+      });
     });
   }
 
@@ -191,6 +196,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   var revealTargets = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  // Tell the inline head snippet that the reveal logic is alive, so it stops
+  // waiting and leaves the .js-reveal class in place.
+  window.__vccRevealReady = true;
   if (revealTargets.length) {
     function revealNode(node) {
       node.classList.add('is-visible');

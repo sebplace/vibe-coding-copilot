@@ -4084,20 +4084,37 @@ def generate_site(content, root, langs, lang_label):
                 f'<script data-goatcounter="https://{GOATCOUNTER_CODE}.goatcounter.com/count" '
                 f'async src="https://gc.zgo.at/count.js"></script>\n  '
             )
+        page_url = f"{PLACEHOLDER_SITE_BASE}{lang}/{page_filename(lang, current_page)}"
+        og_image_url = f"{PLACEHOLDER_SITE_BASE}assets/og-image.png"
         return f"""<!DOCTYPE html>
   <html lang="{meta["html_lang"]}">
   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+  /* Enables the scroll-reveal animation before first paint so content doesn't
+     flash in. If script.js never reports itself ready (blocked, failed to load,
+     JS error), the mark is removed and everything stays visible. */
+  (function(){{var d=document.documentElement;d.className+=(d.className?" ":"")+"js-reveal";
+  window.setTimeout(function(){{if(!window.__vccRevealReady){{d.className=d.className.replace(/(^|\\s)js-reveal(\\s|$)/," ");}}}},2500);}})();
+  </script>
   <title>{esc(full_title)}</title>
   <meta name="description" content="{esc(description)}">
+  <link rel="canonical" href="{page_url}">
   <meta property="og:title" content="{esc(full_title)}">
   <meta property="og:description" content="{esc(description)}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="{OG_LOCALE[lang]}">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="{page_url}">
+  <meta property="og:site_name" content="{esc(meta["site_name"])}">
+  <meta property="og:image" content="{og_image_url}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{esc(meta["site_name"])} — {esc(meta.get("brand_tagline", "GitHub Copilot"))}">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{esc(full_title)}">
   <meta name="twitter:description" content="{esc(description)}">
+  <meta name="twitter:image" content="{og_image_url}">
   {hreflang_links_html(current_page)}
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../assets/style.min.css">
@@ -4117,7 +4134,7 @@ def generate_site(content, root, langs, lang_label):
   </html>"""
     def render_counter_card(item):
         return f"""<div class="impact-stat" data-reveal>
-      <div class="impact-stat-value" data-counter="{int(item["value"])}">0</div>
+      <div class="impact-stat-value" data-counter="{int(item["value"])}">{int(item["value"])}</div>
       <h3>{esc(item["label"])}</h3>
       <p>{esc(item["desc"])}</p>
     </div>"""
@@ -4996,7 +5013,7 @@ def generate_site(content, root, langs, lang_label):
             width = max(6, round(item["used"] / total * 100))
             users_html += f"""<div class="credit-user" data-reveal>
       <div class="credit-user-head"><strong>{esc(item["name"])}</strong><span>{item["used"]} credits</span></div>
-      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="{width}"></div></div>
+      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="{width}" style="width:{width}%"></div></div>
       <p>{esc(item["note"])}</p>
     </div>"""
 
@@ -5056,8 +5073,8 @@ def generate_site(content, root, langs, lang_label):
       <div class="credit-pool-summary">
         <div>
           <span class="eyebrow">{esc(plans["pool_total_label"])}</span>
-          <div class="credit-total"><strong data-counter="{total}">0</strong><span>{esc(plans["pool_total_suffix"])}</span></div>
-          <p class="credit-total-note"><strong data-counter="{used_sum}">0</strong> / {total} credits used in this illustrative month.</p>
+          <div class="credit-total"><strong data-counter="{total}">{total}</strong><span>{esc(plans["pool_total_suffix"])}</span></div>
+          <p class="credit-total-note"><strong data-counter="{used_sum}">{used_sum}</strong> / {total} credits used in this illustrative month.</p>
         </div>
       </div>
       <div class="credit-user-grid">{users_html}</div>
@@ -5757,6 +5774,7 @@ def generate_site(content, root, langs, lang_label):
             for lang in langs
         )
         brand = content["en"]["meta"]["site_name"]
+        root_description = content["en"]["meta"]["description"]
         return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5764,6 +5782,21 @@ def generate_site(content, root, langs, lang_label):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="refresh" content="0; url=en/index.html">
 <title>{esc(brand)}</title>
+<meta name="description" content="{esc(root_description)}">
+<link rel="canonical" href="{PLACEHOLDER_SITE_BASE}">
+<meta property="og:title" content="{esc(brand)}">
+<meta property="og:description" content="{esc(root_description)}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{PLACEHOLDER_SITE_BASE}">
+<meta property="og:site_name" content="{esc(brand)}">
+<meta property="og:image" content="{PLACEHOLDER_SITE_BASE}assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{esc(brand)} — GitHub Copilot for higher education">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{esc(brand)}">
+<meta name="twitter:description" content="{esc(root_description)}">
+<meta name="twitter:image" content="{PLACEHOLDER_SITE_BASE}assets/og-image.png">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="assets/style.min.css">
 </head>

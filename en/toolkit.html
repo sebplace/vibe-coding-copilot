@@ -3,15 +3,30 @@
   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+  /* Enables the scroll-reveal animation before first paint so content doesn't
+     flash in. If script.js never reports itself ready (blocked, failed to load,
+     JS error), the mark is removed and everything stays visible. */
+  (function(){var d=document.documentElement;d.className+=(d.className?" ":"")+"js-reveal";
+  window.setTimeout(function(){if(!window.__vccRevealReady){d.className=d.className.replace(/(^|\s)js-reveal(\s|$)/," ");}},2500);})();
+  </script>
   <title>Toolkit — prompt library — Vibe Coding Copilot</title>
   <meta name="description" content="Ready-to-use Copilot prompts, organized by role. Copy one, adapt the details in brackets, and paste it into Copilot Chat.">
+  <link rel="canonical" href="https://sebplace.github.io/vibe-coding-copilot/en/toolkit.html">
   <meta property="og:title" content="Toolkit — prompt library — Vibe Coding Copilot">
   <meta property="og:description" content="Ready-to-use Copilot prompts, organized by role. Copy one, adapt the details in brackets, and paste it into Copilot Chat.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://sebplace.github.io/vibe-coding-copilot/en/toolkit.html">
+  <meta property="og:site_name" content="Vibe Coding Copilot">
+  <meta property="og:image" content="https://sebplace.github.io/vibe-coding-copilot/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vibe Coding Copilot — Higher Education">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Toolkit — prompt library — Vibe Coding Copilot">
   <meta name="twitter:description" content="Ready-to-use Copilot prompts, organized by role. Copy one, adapt the details in brackets, and paste it into Copilot Chat.">
+  <meta name="twitter:image" content="https://sebplace.github.io/vibe-coding-copilot/assets/og-image.png">
   <link rel="alternate" hreflang="fr" href="../fr/toolkit.html">
   <link rel="alternate" hreflang="nl" href="../nl/toolkit.html">
   <link rel="alternate" hreflang="en" href="../en/toolkit.html">

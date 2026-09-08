@@ -3,15 +3,30 @@
   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+  /* Enables the scroll-reveal animation before first paint so content doesn't
+     flash in. If script.js never reports itself ready (blocked, failed to load,
+     JS error), the mark is removed and everything stays visible. */
+  (function(){var d=document.documentElement;d.className+=(d.className?" ":"")+"js-reveal";
+  window.setTimeout(function(){if(!window.__vccRevealReady){d.className=d.className.replace(/(^|\s)js-reveal(\s|$)/," ");}},2500);})();
+  </script>
   <title>Plans &amp; reality — Vibe Coding Copilot</title>
   <meta name="description" content="The honest map for 2026: some individual education routes are still free, but institution-wide adoption for every staff role now requires a paid organisational plan.">
+  <link rel="canonical" href="https://sebplace.github.io/vibe-coding-copilot/en/plans.html">
   <meta property="og:title" content="Plans &amp; reality — Vibe Coding Copilot">
   <meta property="og:description" content="The honest map for 2026: some individual education routes are still free, but institution-wide adoption for every staff role now requires a paid organisational plan.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://sebplace.github.io/vibe-coding-copilot/en/plans.html">
+  <meta property="og:site_name" content="Vibe Coding Copilot">
+  <meta property="og:image" content="https://sebplace.github.io/vibe-coding-copilot/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vibe Coding Copilot — Higher Education">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Plans &amp; reality — Vibe Coding Copilot">
   <meta name="twitter:description" content="The honest map for 2026: some individual education routes are still free, but institution-wide adoption for every staff role now requires a paid organisational plan.">
+  <meta name="twitter:image" content="https://sebplace.github.io/vibe-coding-copilot/assets/og-image.png">
   <link rel="alternate" hreflang="fr" href="../fr/plans.html">
   <link rel="alternate" hreflang="nl" href="../nl/plans.html">
   <link rel="alternate" hreflang="en" href="../en/plans.html">
@@ -114,15 +129,15 @@
       <span>Facts checked in August 2026 against docs.github.com — GitHub Copilot changes quickly, so re-check precise numbers before a buying decision.</span>
     </div>
     <div class="impact-grid"><div class="impact-stat" data-reveal>
-      <div class="impact-stat-value" data-counter="5">0</div>
+      <div class="impact-stat-value" data-counter="5">5</div>
       <h3>individual plans</h3>
       <p>From Copilot Free to Max</p>
     </div><div class="impact-stat" data-reveal>
-      <div class="impact-stat-value" data-counter="2">0</div>
+      <div class="impact-stat-value" data-counter="2">2</div>
       <h3>organisation plans</h3>
       <p>Business and Enterprise</p>
     </div><div class="impact-stat" data-reveal>
-      <div class="impact-stat-value" data-counter="50000">0</div>
+      <div class="impact-stat-value" data-counter="50000">50000</div>
       <h3>Campus Program Actions minutes</h3>
       <p>Per institution, per year, with 50 GB Packages</p>
     </div><div class="impact-stat" data-reveal>
@@ -205,21 +220,21 @@
       <div class="credit-pool-summary">
         <div>
           <span class="eyebrow">Illustrative Business pool</span>
-          <div class="credit-total"><strong data-counter="5700">0</strong><span>credits shared across 3 seats</span></div>
-          <p class="credit-total-note"><strong data-counter="4650">0</strong> / 5700 credits used in this illustrative month.</p>
+          <div class="credit-total"><strong data-counter="5700">5700</strong><span>credits shared across 3 seats</span></div>
+          <p class="credit-total-note"><strong data-counter="4650">4650</strong> / 5700 credits used in this illustrative month.</p>
         </div>
       </div>
       <div class="credit-user-grid"><div class="credit-user" data-reveal>
       <div class="credit-user-head"><strong>Light user</strong><span>250 credits</span></div>
-      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="6"></div></div>
+      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="6" style="width:6%"></div></div>
       <p>Checks Chat twice a day</p>
     </div><div class="credit-user" data-reveal>
       <div class="credit-user-head"><strong>Project lead</strong><span>1200 credits</span></div>
-      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="21"></div></div>
+      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="21" style="width:21%"></div></div>
       <p>Uses Chat, CLI, and one Space</p>
     </div><div class="credit-user" data-reveal>
       <div class="credit-user-head"><strong>Heavy builder</strong><span>3200 credits</span></div>
-      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="56"></div></div>
+      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="56" style="width:56%"></div></div>
       <p>Runs agentic features all week</p>
     </div></div>
       <ul class="mini-list"><li>1 credit = $0.01.</li><li>Business seats include 1,900 credits each per month; Enterprise seats include 3,900 each.</li><li>Code completions and next edit suggestions are not billed in credits on paid plans.</li></ul>

@@ -41,7 +41,7 @@ $itemsToCopy = @(
     "fr", "nl", "en", "assets",
     "index.html", "sitemap.xml", "robots.txt", "README.md",
     "generate_site.py", "site_refresh.py", "check_links.py", "check_case.py",
-    "deploy.ps1"
+    "deploy.ps1", "build-assets"
 )
 
 function Write-Step($text) {

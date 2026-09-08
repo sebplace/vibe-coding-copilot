@@ -3,15 +3,30 @@
   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+  /* Enables the scroll-reveal animation before first paint so content doesn't
+     flash in. If script.js never reports itself ready (blocked, failed to load,
+     JS error), the mark is removed and everything stays visible. */
+  (function(){var d=document.documentElement;d.className+=(d.className?" ":"")+"js-reveal";
+  window.setTimeout(function(){if(!window.__vccRevealReady){d.className=d.className.replace(/(^|\s)js-reveal(\s|$)/," ");}},2500);})();
+  </script>
   <title>Best practices — Vibe Coding Copilot</title>
   <meta name="description" content="A one-page checklist to start strong, stay factual, and keep your rollout realistic from first prompt to institutional adoption.">
+  <link rel="canonical" href="https://sebplace.github.io/vibe-coding-copilot/en/best-practices.html">
   <meta property="og:title" content="Best practices — Vibe Coding Copilot">
   <meta property="og:description" content="A one-page checklist to start strong, stay factual, and keep your rollout realistic from first prompt to institutional adoption.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://sebplace.github.io/vibe-coding-copilot/en/best-practices.html">
+  <meta property="og:site_name" content="Vibe Coding Copilot">
+  <meta property="og:image" content="https://sebplace.github.io/vibe-coding-copilot/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vibe Coding Copilot — Higher Education">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Best practices — Vibe Coding Copilot">
   <meta name="twitter:description" content="A one-page checklist to start strong, stay factual, and keep your rollout realistic from first prompt to institutional adoption.">
+  <meta name="twitter:image" content="https://sebplace.github.io/vibe-coding-copilot/assets/og-image.png">
   <link rel="alternate" hreflang="fr" href="../fr/best-practices.html">
   <link rel="alternate" hreflang="nl" href="../nl/best-practices.html">
   <link rel="alternate" hreflang="en" href="../en/best-practices.html">

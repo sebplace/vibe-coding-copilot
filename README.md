@@ -78,6 +78,40 @@ visite. Note : GoatCounter filtre les navigateurs automatisés (Playwright, robo
 vraies visites humaines apparaissent dans le tableau de bord, ce qui a été vérifié comme un
 comportement voulu (pas un bug) lors de la mise en service.
 
+## Rendu sans JavaScript
+
+Le contenu est **visible par défaut**. L'animation d'apparition au défilement est un
+enrichissement optionnel, activé seulement si le JavaScript fonctionne :
+
+1. Un court script en ligne dans `<head>` ajoute la classe `js-reveal` à `<html>` avant le
+   premier affichage (évite un clignotement du contenu).
+2. `assets/script.js` positionne `window.__vccRevealReady = true` quand la logique
+   d'apparition démarre.
+3. Si ce signal n'arrive pas dans les 2,5 s (script bloqué, échec de chargement, erreur JS,
+   extension, poste verrouillé), le script en ligne **retire** `js-reveal` et tout redevient
+   visible.
+
+Règle à respecter pour toute évolution : `[data-reveal]` ne doit **jamais** être masqué sans
+la classe `js-reveal`, sinon une simple panne du script rend le site entièrement blanc — ce
+qui était le cas avant le 08/09/2026. Même principe pour les compteurs (`data-counter`) et
+les barres (`data-bar-target`) : le HTML contient déjà la valeur finale, et le JavaScript la
+remet à zéro uniquement pour l'animer.
+
+Trois scénarios à vérifier après toute modification de ce mécanisme : JavaScript désactivé,
+`script.js` bloqué mais JavaScript actif, et fonctionnement normal.
+
+## Image d'aperçu de partage
+
+`assets/og-image.png` (1200×630) est référencée par `og:image` / `twitter:image` sur toutes
+les pages **et sur la page racine**, celle qui est réellement partagée. Les balises
+`og:url` et `canonical` pointent vers l'URL absolue de chaque page, et `twitter:card` vaut
+`summary_large_image`.
+
+Pour régénérer l'image après un changement de message ou de chiffres : modifier
+`build-assets/og-image-template.html`, l'ouvrir dans un navigateur en 1200×630 et en faire
+une capture enregistrée sous `assets/og-image.png`. Les chiffres affichés (25 leçons,
+36 cas d'usage, 8 métiers) doivent rester cohérents avec le contenu réel du site.
+
 ## Architecture — le point le plus important à comprendre
 
 Il y a **deux fichiers Python, mais un seul est réellement le moteur de rendu** :

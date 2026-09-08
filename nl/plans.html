@@ -3,15 +3,30 @@
   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+  /* Enables the scroll-reveal animation before first paint so content doesn't
+     flash in. If script.js never reports itself ready (blocked, failed to load,
+     JS error), the mark is removed and everything stays visible. */
+  (function(){var d=document.documentElement;d.className+=(d.className?" ":"")+"js-reveal";
+  window.setTimeout(function(){if(!window.__vccRevealReady){d.className=d.className.replace(/(^|\s)js-reveal(\s|$)/," ");}},2500);})();
+  </script>
   <title>Plannen &amp; realiteit — Vibe Coding Copilot</title>
   <meta name="description" content="De eerlijke kaart voor 2026: sommige individuele onderwijsroutes blijven gratis, maar institutionele adoptie voor alle rollen loopt nu via een betaald organisatieplan.">
+  <link rel="canonical" href="https://sebplace.github.io/vibe-coding-copilot/nl/plans.html">
   <meta property="og:title" content="Plannen &amp; realiteit — Vibe Coding Copilot">
   <meta property="og:description" content="De eerlijke kaart voor 2026: sommige individuele onderwijsroutes blijven gratis, maar institutionele adoptie voor alle rollen loopt nu via een betaald organisatieplan.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="nl_NL">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://sebplace.github.io/vibe-coding-copilot/nl/plans.html">
+  <meta property="og:site_name" content="Vibe Coding Copilot">
+  <meta property="og:image" content="https://sebplace.github.io/vibe-coding-copilot/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vibe Coding Copilot — Hoger Onderwijs">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Plannen &amp; realiteit — Vibe Coding Copilot">
   <meta name="twitter:description" content="De eerlijke kaart voor 2026: sommige individuele onderwijsroutes blijven gratis, maar institutionele adoptie voor alle rollen loopt nu via een betaald organisatieplan.">
+  <meta name="twitter:image" content="https://sebplace.github.io/vibe-coding-copilot/assets/og-image.png">
   <link rel="alternate" hreflang="fr" href="../fr/plans.html">
   <link rel="alternate" hreflang="nl" href="../nl/plans.html">
   <link rel="alternate" hreflang="en" href="../en/plans.html">
@@ -114,15 +129,15 @@
       <span>Feiten gecontroleerd in augustus 2026 op docs.github.com — GitHub Copilot evolueert snel, dus controleer exacte cijfers opnieuw vóór een aankoopbeslissing.</span>
     </div>
     <div class="impact-grid"><div class="impact-stat" data-reveal>
-      <div class="impact-stat-value" data-counter="5">0</div>
+      <div class="impact-stat-value" data-counter="5">5</div>
       <h3>individuele plannen</h3>
       <p>Van Copilot Free tot Max</p>
     </div><div class="impact-stat" data-reveal>
-      <div class="impact-stat-value" data-counter="2">0</div>
+      <div class="impact-stat-value" data-counter="2">2</div>
       <h3>organisatieplannen</h3>
       <p>Business en Enterprise</p>
     </div><div class="impact-stat" data-reveal>
-      <div class="impact-stat-value" data-counter="50000">0</div>
+      <div class="impact-stat-value" data-counter="50000">50000</div>
       <h3>GitHub Actions-minuten van het Campus Program</h3>
       <p>Per instelling, met 50 GB Packages</p>
     </div><div class="impact-stat" data-reveal>
@@ -205,21 +220,21 @@
       <div class="credit-pool-summary">
         <div>
           <span class="eyebrow">Voorbeeld van een Business-pool</span>
-          <div class="credit-total"><strong data-counter="5700">0</strong><span>credits gedeeld over 3 seats</span></div>
-          <p class="credit-total-note"><strong data-counter="4650">0</strong> / 5700 credits used in this illustrative month.</p>
+          <div class="credit-total"><strong data-counter="5700">5700</strong><span>credits gedeeld over 3 seats</span></div>
+          <p class="credit-total-note"><strong data-counter="4650">4650</strong> / 5700 credits used in this illustrative month.</p>
         </div>
       </div>
       <div class="credit-user-grid"><div class="credit-user" data-reveal>
       <div class="credit-user-head"><strong>Lichte gebruiker</strong><span>250 credits</span></div>
-      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="6"></div></div>
+      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="6" style="width:6%"></div></div>
       <p>Opent Chat twee keer per dag</p>
     </div><div class="credit-user" data-reveal>
       <div class="credit-user-head"><strong>Projectleider</strong><span>1200 credits</span></div>
-      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="21"></div></div>
+      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="21" style="width:21%"></div></div>
       <p>Gebruikt Chat, CLI en één Space</p>
     </div><div class="credit-user" data-reveal>
       <div class="credit-user-head"><strong>Intensieve bouwer</strong><span>3200 credits</span></div>
-      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="56"></div></div>
+      <div class="credit-bar-track"><div class="credit-bar" data-bar-target="56" style="width:56%"></div></div>
       <p>Werkt de hele week met agentische functies</p>
     </div></div>
       <ul class="mini-list"><li>1 credit = $0,01.</li><li>Business bevat 1.900 credits per gebruiker per maand; Enterprise bevat er 3.900.</li><li>Codecompletions en next edit suggestions worden op betaalde plannen niet in credits aangerekend.</li></ul>
