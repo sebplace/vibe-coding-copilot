@@ -12,19 +12,28 @@ long terme.
 ## Site publié
 
 Le site est en ligne : **https://sebplace.github.io/vibe-coding-copilot/** (choix de langue
-à la racine, puis `/fr/`, `/nl/`, `/en/`). Déployé dans un sous-dossier `vibe-coding-copilot/`
-du dépôt personnel `sebplace/sebplace.github.io` (qui héberge par ailleurs un vrai blog Jekyll
-actif) — pour mettre à jour le site en ligne, régénérer localement puis copier le contenu de
-`fr/`, `nl/`, `en/`, `assets/`, `index.html`, `sitemap.xml`, `robots.txt` dans ce sous-dossier
-du dépôt, committer et pousser sur `master`.
+à la racine, puis `/fr/`, `/nl/`, `/en/`).
 
-**Limite corrigée (vérifiée le 21/08/2026)** : contrairement à une inquiétude initiale, le
-`robots.txt`/`sitemap.xml` du vrai domaine racine (générés automatiquement par le plugin Jekyll
-`jekyll-sitemap` du blog existant, cf. `plugins:` dans son `_config.yml`) **incluent bien
-automatiquement toutes les pages statiques du sous-dossier** `vibe-coding-copilot/` — vérifié en
-lisant `https://sebplace.github.io/sitemap.xml` en production, qui liste chaque page FR/NL/EN du
-projet. Le `robots.txt`/`sitemap.xml` propres au sous-dossier (copiés dedans) ne sont donc qu'une
-redondance inoffensive, jamais servis par de vrais robots — rien à corriger.
+**Dépôt de publication (depuis le 29/08/2026)** : `sebplace/vibe-coding-copilot`, branche
+`main`, servi **depuis la racine du dépôt** par GitHub Pages. Le site n'est plus un
+sous-dossier de `sebplace/sebplace.github.io` : pousser là-bas ne met plus le site à jour.
+L'URL publique est inchangée.
+
+Pour publier une mise à jour, utiliser le script (il régénère, vérifie et pousse) :
+
+```powershell
+.\deploy.ps1 -Message "Description du changement"
+```
+
+**Référencement (vérifié le 08/09/2026)** : `https://sebplace.github.io/robots.txt` et
+`/sitemap.xml` renvoient désormais **404** — l'ancien blog Jekyll qui les générait a été
+remplacé par une page statique. Le `robots.txt` et le `sitemap.xml` du projet
+(`/vibe-coding-copilot/robots.txt` et `/vibe-coding-copilot/sitemap.xml`, 58 URL) répondent
+bien en 200 et restent valides pour les pages du projet, mais **un `robots.txt` placé dans un
+sous-dossier ne fait pas autorité pour le domaine** : seul celui de la racine compte pour les
+robots. Les pages restent indexables ; pour un référencement complet, déclarer le sitemap du
+projet dans la Search Console, ou publier un `robots.txt` à la racine du domaine — ce qui
+suppose de ne pas casser les autres contenus hébergés sur ce domaine.
 
 ## Démarrage rapide
 

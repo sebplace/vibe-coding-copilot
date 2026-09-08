@@ -28,6 +28,62 @@
     "keywords": ""
   },
   {
+    "title": "What about the OCRE framework?",
+    "description": "GitHub Copilot does not appear as its own product in the OCRE catalogue. However, if your institution already has an Azure contract through an OCRE-affiliated procurement route, Copilot Business or Enterprise can typically be activated as usage-based billing on that same Azure subscription — a real but indirect path, to confirm with your Azure reseller.",
+    "href": "plans.html#ocre",
+    "category": "plans",
+    "keywords": "OCRE Azure GEANT framework procurement subscription reseller My institution wants to explore the OCRE route"
+  },
+  {
+    "title": "Copilot Business",
+    "description": "$19 / seat / month — 1,900 AI credits per user / month included",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "Good for staff-wide rollout with policy controls Code completions and next edit suggestions remain unlimited Chat, CLI, Spaces, cloud agent, and similar model features draw from pooled AI credits Starting 22 April 2026, new self-serve sign-ups for organisations on GitHub Free and GitHub Team are temporarily paused. OCRE Azure"
+  },
+  {
+    "title": "Copilot Enterprise",
+    "description": "$39 / seat / month — 3,900 AI credits per user / month included",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "Enterprise governance and admin controls More included credits than Business Designed for large-scale rollout and policy-managed environments Requires GitHub Enterprise Cloud and is set up through GitHub Sales. OCRE Azure"
+  },
+  {
+    "title": "Copilot Free",
+    "description": "$0 — Anyone with a GitHub account",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "No application needed 2,000 completions per month Automatic model selection only No premium models Limited Chat"
+  },
+  {
+    "title": "Copilot Student",
+    "description": "$0 — Verified students",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "Apply via GitHub Education Full student plan Excludes third-party coding agents Re-verified monthly Cannot be self-cancelled once granted"
+  },
+  {
+    "title": "Copilot Pro",
+    "description": "$10 / month — Individual staff or developers",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "Free for verified teachers and popular open-source maintainers This is the specific free teacher entitlement Good default individual paid plan Includes CLI and GitHub Copilot app"
+  },
+  {
+    "title": "Copilot Pro+",
+    "description": "$39 / month — Heavier individual use",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "No standing free route More AI credits Premium models Higher ceiling than Pro"
+  },
+  {
+    "title": "Copilot Max",
+    "description": "$100 / month — Maximum individual capacity",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "No standing free route Top individual tier More AI credits Premium models"
+  },
+  {
     "title": "Your first commit",
     "description": "The beginner-proof path from “I do not code” to “my code is on GitHub” — with GitHub Copilot helping you, not raw git syntax.",
     "href": "first-commit.html",
@@ -305,7 +361,7 @@
     "description": "Lesson 6",
     "href": "vibe-expert.html#lesson-6",
     "category": "lesson",
-    "keywords": "An AI model costs something for every question asked. On paid organisational Copilot plans, model-heavy features such as Chat, CLI, Spaces, the cloud agent, and similar agentic tools use AI credits — but code completions and next edit suggestions stay unlimited and are not billed in credits. Business includes 1,900 AI credits per user per month and Enterprise includes 3,900, with higher promotional allocations through 1 September 2026. Those credits are pooled across the whole billing entity, so heavy and light users balance out instead of every person being trapped inside a silo. Write down which part of your workflow needs unlimited autocomplete and which part truly needs model-heavy agentic work. That distinction is the basis of honest cost control."
+    "keywords": "An AI model costs something for every question asked. On paid organisational Copilot plans, model-heavy features such as Chat, CLI, Spaces, the cloud agent, and similar agentic tools use AI credits — but code completions and next edit suggestions stay unlimited and are not billed in credits. Business includes 1,900 AI credits per user per month and Enterprise includes 3,900. Those credits are pooled across the whole billing entity, so heavy and light users balance out instead of every person being trapped inside a silo. GitHub runs promotional allowances from time to time — check the official plans page for what applies today. Write down which part of your workflow needs unlimited autocomplete and which part truly needs model-heavy agentic work. That distinction is the basis of honest cost control."
   },
   {
     "title": "Going beyond text",

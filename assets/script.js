@@ -1028,6 +1028,18 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(function () { return []; });
     }
 
+    // Lowercase and strip diacritics so "etudiant" finds "étudiant". Falls back
+    // to a plain lowercase when String.normalize isn't available.
+    function searchNormalize(value) {
+      var text = String(value || '').toLowerCase();
+      if (typeof text.normalize !== 'function') return text;
+      try {
+        return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      } catch (_error) {
+        return text;
+      }
+    }
+
     function renderSearchResults(query) {
       if (!searchResults) return;
       if (!query) {
@@ -1036,9 +1048,20 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
       loadSearchIndex().then(function (entries) {
-        var needle = query.toLowerCase();
+        var needle = searchNormalize(query);
         var matches = entries.filter(function (entry) {
-          return (entry.title + ' ' + entry.description + ' ' + (entry.keywords || '')).toLowerCase().indexOf(needle) !== -1;
+          if (!entry.__haystack) {
+            entry.__haystack = searchNormalize(
+              entry.title + ' ' + entry.description + ' ' + (entry.keywords || '') + ' ' + (entry.category || '')
+            );
+          }
+          return entry.__haystack.indexOf(needle) !== -1;
+        }).sort(function (a, b) {
+          // Title matches first, so searching "OCRE" surfaces the plans section
+          // rather than an unrelated lesson that merely mentions it.
+          var aTitle = searchNormalize(a.title).indexOf(needle) !== -1 ? 0 : 1;
+          var bTitle = searchNormalize(b.title).indexOf(needle) !== -1 ? 0 : 1;
+          return aTitle - bTitle;
         }).slice(0, 18);
         if (!matches.length) {
           searchResults.innerHTML = '';
@@ -1152,26 +1175,44 @@ document.addEventListener('DOMContentLoaded', function () {
     var feedbackVotedKey = 'vcc-feedback-voted-' + feedbackPage;
     var feedbackThanks = feedbackWidget.querySelector('.feedback-thanks');
     var feedbackActions = feedbackWidget.querySelector('.feedback-actions');
-    if (storageGet(feedbackVotedKey)) {
-      if (feedbackActions) feedbackActions.hidden = true;
+    // In-memory guard: localStorage can be unavailable (private mode, disabled
+    // storage) and must not be the only thing preventing a double count.
+    var feedbackSubmitted = false;
+
+    function closeFeedback() {
+      if (feedbackActions) {
+        feedbackActions.hidden = true;
+        feedbackActions.querySelectorAll('button').forEach(function (button) {
+          button.disabled = true;
+        });
+      }
       if (feedbackThanks) feedbackThanks.hidden = false;
+    }
+
+    if (storageGet(feedbackVotedKey)) {
+      feedbackSubmitted = true;
+      closeFeedback();
     }
     feedbackWidget.querySelectorAll('[data-feedback-vote]').forEach(function (btn) {
       btn.addEventListener('click', function () {
+        if (feedbackSubmitted) return;
+        feedbackSubmitted = true;
         var vote = btn.getAttribute('data-feedback-vote') || 'up';
         storageSet(feedbackVotedKey, vote);
-        if (feedbackActions) feedbackActions.hidden = true;
-        if (feedbackThanks) feedbackThanks.hidden = false;
+        closeFeedback();
         try {
           if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+            // Language is part of the event name so FR/NL/EN feedback stays
+            // distinguishable in the dashboard.
             window.goatcounter.count({
-              path: 'feedback-' + vote + '-' + feedbackPage,
-              title: 'Feedback ' + vote + ' on ' + feedbackPage,
+              path: 'feedback-' + vote + '-' + pageLang + '-' + feedbackPage,
+              title: 'Feedback ' + vote + ' on ' + feedbackPage + ' (' + pageLang + ')',
               event: true
             });
           }
         } catch (_error) {
-          // GoatCounter not loaded (placeholder site code, blocked, offline) — no-op.
+          // Analytics unavailable (blocked, offline, not configured). The vote is
+          // still acknowledged locally; we deliberately don't retry or queue.
         }
       });
     });

@@ -1411,7 +1411,7 @@ CONTENT_UPDATES = {
                     "icon": "🏫",
                     "title": "Copilot Business",
                     "price": "$19 / seat / month",
-                    "credits": "1,900 AI credits per user / month included (promotional 3,000 through 1 Sept 2026)",
+                    "credits": "1,900 AI credits per user / month included",
                     "note": "Starting 22 April 2026, new self-serve sign-ups for organisations on GitHub Free and GitHub Team are temporarily paused.",
                     "bullets": ["Good for staff-wide rollout with policy controls", "Code completions and next edit suggestions remain unlimited", "Chat, CLI, Spaces, cloud agent, and similar model features draw from pooled AI credits"],
                 },
@@ -1419,7 +1419,7 @@ CONTENT_UPDATES = {
                     "icon": "🛡️",
                     "title": "Copilot Enterprise",
                     "price": "$39 / seat / month",
-                    "credits": "3,900 AI credits per user / month included (promotional 7,000 through 1 Sept 2026)",
+                    "credits": "3,900 AI credits per user / month included",
                     "note": "Requires GitHub Enterprise Cloud and is set up through GitHub Sales.",
                     "bullets": ["Enterprise governance and admin controls", "More included credits than Business", "Designed for large-scale rollout and policy-managed environments"],
                 },
@@ -1540,7 +1540,7 @@ CONTENT_UPDATES = {
                     5: {
                         "paragraphs": [
                             "An AI model costs something for every question asked. On paid organisational Copilot plans, model-heavy features such as Chat, CLI, Spaces, the cloud agent, and similar agentic tools use AI credits — but code completions and next edit suggestions stay unlimited and are not billed in credits.",
-                            "Business includes 1,900 AI credits per user per month and Enterprise includes 3,900, with higher promotional allocations through 1 September 2026. Those credits are pooled across the whole billing entity, so heavy and light users balance out instead of every person being trapped inside a silo.",
+                            "Business includes 1,900 AI credits per user per month and Enterprise includes 3,900. Those credits are pooled across the whole billing entity, so heavy and light users balance out instead of every person being trapped inside a silo. GitHub runs promotional allowances from time to time — check the official plans page for what applies today.",
                         ],
                         "exercise": "Write down which part of your workflow needs unlimited autocomplete and which part truly needs model-heavy agentic work. That distinction is the basis of honest cost control.",
                     },
@@ -1796,7 +1796,7 @@ CONTENT_UPDATES = {
                     "icon": "🏫",
                     "title": "Copilot Business",
                     "price": "19 $ / siège / mois",
-                    "credits": "1 900 AI credits par personne et par mois incluses (3 000 en allocation promotionnelle jusqu’au 1er septembre 2026)",
+                    "credits": "1 900 AI credits par personne et par mois incluses",
                     "note": "Depuis le 22 avril 2026, les nouveaux self-serve sign-ups sont temporairement en pause pour les organisations sur GitHub Free et GitHub Team.",
                     "bullets": ["Pertinent pour un déploiement staff avec politiques et gouvernance", "Les complétions de code et next edit suggestions restent illimitées", "Le Chat, la CLI, Spaces, le cloud agent et les fonctions agentiques tirent dans le pool d’AI credits"],
                 },
@@ -1804,7 +1804,7 @@ CONTENT_UPDATES = {
                     "icon": "🛡️",
                     "title": "Copilot Enterprise",
                     "price": "39 $ / siège / mois",
-                    "credits": "3 900 AI credits par personne et par mois incluses (7 000 en allocation promotionnelle jusqu’au 1er septembre 2026)",
+                    "credits": "3 900 AI credits par personne et par mois incluses",
                     "note": "Nécessite GitHub Enterprise Cloud et se met en place via GitHub Sales.",
                     "bullets": ["Gouvernance enterprise et contrôle admin", "Plus de crédits inclus que Business", "Pensé pour un déploiement large et des environnements gérés par politiques"],
                 },
@@ -1925,7 +1925,7 @@ CONTENT_UPDATES = {
                     5: {
                         "paragraphs": [
                             "Un modèle d’IA coûte quelque chose à chaque question posée. Sur les plans Copilot organisationnels payants, les fonctionnalités gourmandes en modèle comme Chat, la CLI, Spaces, le cloud agent et les fonctions similaires consomment des AI credits — mais les complétions de code et next edit suggestions restent illimitées et ne sont pas facturées en credits.",
-                            "Business inclut 1 900 AI credits par personne et par mois, Enterprise en inclut 3 900, avec des allocations promotionnelles supérieures jusqu’au 1er septembre 2026. Ces credits sont mutualisées au niveau de l’entité de facturation : les gros et petits usages se compensent au lieu d’enfermer chaque personne dans un silo séparé.",
+                            "Business inclut 1 900 AI credits par personne et par mois, Enterprise en inclut 3 900. Ces credits sont mutualisées au niveau de l’entité de facturation : les gros et petits usages se compensent au lieu d’enfermer chaque personne dans un silo séparé. GitHub propose parfois des allocations promotionnelles : vérifie la page officielle des plans pour savoir ce qui s’applique aujourd’hui.",
                         ],
                         "exercise": "Note quelle partie de ton flux relève de l’autocomplétion illimitée et quelle partie demande réellement des fonctions agentiques plus coûteuses. C’est la base d’un pilotage honnête des coûts.",
                     },
@@ -2181,7 +2181,7 @@ CONTENT_UPDATES = {
                     "icon": "🏫",
                     "title": "Copilot Business",
                     "price": "$19 / seat / maand",
-                    "credits": "1.900 AI credits per gebruiker per maand inbegrepen (promotioneel 3.000 tot 1 september 2026)",
+                    "credits": "1.900 AI credits per gebruiker per maand inbegrepen",
                     "note": "Sinds 22 april 2026 zijn nieuwe self-serve sign-ups tijdelijk gepauzeerd voor organisaties op GitHub Free en GitHub Team.",
                     "bullets": ["Geschikt voor staff-brede uitrol met beleid en governance", "Codecompletions en next edit suggestions blijven onbeperkt", "Chat, CLI, Spaces, cloud agent en gelijkaardige agentische functies gebruiken gedeelde AI credits"],
                 },
@@ -2189,7 +2189,7 @@ CONTENT_UPDATES = {
                     "icon": "🛡️",
                     "title": "Copilot Enterprise",
                     "price": "$39 / seat / maand",
-                    "credits": "3.900 AI credits per gebruiker per maand inbegrepen (promotioneel 7.000 tot 1 september 2026)",
+                    "credits": "3.900 AI credits per gebruiker per maand inbegrepen",
                     "note": "Vereist GitHub Enterprise Cloud en wordt opgezet via GitHub Sales.",
                     "bullets": ["Enterprise-governance en admincontrole", "Meer inbegrepen credits dan Business", "Ontworpen voor brede uitrol en policy-managed omgevingen"],
                 },
@@ -2310,7 +2310,7 @@ CONTENT_UPDATES = {
                     5: {
                         "paragraphs": [
                             "Een AI-model kost iets bij elke vraag. Op betaalde Copilot-plannen voor organisaties gebruiken modelzware functies zoals Chat, CLI, Spaces, de cloud agent en vergelijkbare agentische tools AI credits — maar codecompletions en next edit suggestions blijven onbeperkt en worden niet in credits aangerekend.",
-                            "Business bevat 1.900 AI credits per gebruiker per maand en Enterprise bevat er 3.900, met hogere promotionele allocaties tot 1 september 2026. Die credits worden over de hele facturatie-entiteit gedeeld, zodat zware en lichte gebruikers elkaar in evenwicht houden in plaats van elk in een apart silo te zitten.",
+                            "Business bevat 1.900 AI credits per gebruiker per maand en Enterprise bevat er 3.900. Die credits worden over de hele facturatie-entiteit gedeeld, zodat zware en lichte gebruikers elkaar in evenwicht houden in plaats van elk in een apart silo te zitten. GitHub voorziet af en toe promotionele allocaties: check de officiële plannenpagina voor wat vandaag geldt.",
                         ],
                         "exercise": "Schrijf op welk deel van je workflow onbeperkte autocomplete nodig heeft en welk deel echt modelzware agentische functies vraagt. Dat onderscheid is de basis van eerlijk kostenbeheer.",
                     },
@@ -3191,7 +3191,7 @@ BUILD_VS_BUY_CONTENT = {
             "gap_positive": "More annual spend currently sits in small tools than in the Copilot seat budget shown here.",
             "gap_negative": "The Copilot seat budget shown here is higher than the current small-tool subscription spend you entered.",
             "footnote": "Code completions and next edit suggestions stay unlimited on paid plans. Chat, CLI, Spaces, cloud agent, and similar model-heavy features use the pooled AI credits.",
-            "plan_note": "Use the Plans page for the full pricing reality, eligibility detail, and the promotional credit allocations in 2026.",
+            "plan_note": "Use the Plans page for the full pricing reality, eligibility detail, and the current credit allowances.",
         },
         "ladder_title": "Vibe Coding Maturity Ladder",
         "ladder_sub": "A credible path from “tiny useful thing” to “institutional capability” helps teams take the first step without pretending every prototype should become a platform.",
@@ -3318,7 +3318,7 @@ BUILD_VS_BUY_CONTENT = {
             "gap_positive": "Tu dépenses actuellement plus par an en petits outils que dans le budget Copilot illustré ici.",
             "gap_negative": "Le budget de sièges Copilot illustré ici est supérieur à la dépense d’abonnements que tu as saisie.",
             "footnote": "Les complétions de code et next edit suggestions restent illimitées sur les plans payants. Le Chat, la CLI, Spaces, le cloud agent et les fonctions similaires consomment les AI credits mutualisées.",
-            "plan_note": "Utilise la page Plans pour la réalité complète des tarifs, de l’éligibilité et des allocations promotionnelles de credits en 2026.",
+            "plan_note": "Utilise la page Plans pour la réalité complète des tarifs, de l’éligibilité et des allocations de credits en vigueur.",
         },
         "ladder_title": "Échelle de maturité du vibe coding",
         "ladder_sub": "Un chemin crédible entre « petite chose utile » et « capacité institutionnelle » aide à faire le premier pas sans prétendre que chaque prototype doit devenir une plateforme.",
@@ -3445,7 +3445,7 @@ BUILD_VS_BUY_CONTENT = {
             "gap_positive": "Er zit momenteel meer jaarlijkse spend in kleine tools dan in het Copilot-seatbudget dat hier getoond wordt.",
             "gap_negative": "Het Copilot-seatbudget dat hier getoond wordt ligt hoger dan de abonnementsspend die je hebt ingevoerd.",
             "footnote": "Codecompletions en next edit suggestions blijven onbeperkt op betaalde plannen. Chat, CLI, Spaces, cloud agent en gelijkaardige modelzware functies gebruiken de gedeelde AI credits.",
-            "plan_note": "Gebruik de Plannen-pagina voor de volledige prijsrealiteit, details rond eligibility en de promotionele creditallocaties in 2026.",
+            "plan_note": "Gebruik de Plannen-pagina voor de volledige prijsrealiteit, details rond eligibility en de geldende creditallocaties.",
         },
         "ladder_title": "Vibe Coding Maturity Ladder",
         "ladder_sub": "Een geloofwaardig pad van “klein nuttig ding” naar “institutionele capaciteit” helpt teams om de eerste stap te zetten zonder te doen alsof elk prototype een platform moet worden.",
@@ -5041,7 +5041,7 @@ def generate_site(content, root, langs, lang_label):
         <p>{esc(plans["org_intro"])}</p>
       </div>
       <div class="plan-card-grid">{org_cards}</div>
-      <div class="ocre-note" data-reveal>
+      <div class="ocre-note" id="ocre" data-reveal>
         <h3>{esc(plans["ocre_title"])}</h3>
         <p>{esc(plans["ocre_text"])}</p>
         <a class="btn btn-primary" href="{mailto_href(plans["ocre_mailto_subject"], plans["ocre_mailto_body"])}">{esc(plans["ocre_cta_label"])} →</a>
@@ -5623,6 +5623,34 @@ def generate_site(content, root, langs, lang_label):
         add_entry(content[lang]["explorer"]["title"], content[lang]["explorer"]["sub"], local_href("explorer", lang), "page")
         add_entry(content[lang]["scenarios"]["title"], content[lang]["scenarios"]["sub"], local_href("scenarios", lang), "page")
         add_entry(content[lang]["plans"]["title"], content[lang]["plans"]["sub"], local_href("plans", lang), "page")
+
+        # Plans sub-sections. Without these, searching a decisive term like "OCRE"
+        # or "Azure" returned nothing even though the answer is on the Plans page.
+        plans_content = content[lang]["plans"]
+        add_entry(
+            plans_content["ocre_title"],
+            plans_content["ocre_text"],
+            f'{local_href("plans", lang)}#ocre',
+            "plans",
+            "OCRE Azure GEANT framework procurement subscription reseller "
+            + plans_content["ocre_cta_label"],
+        )
+        for card in plans_content.get("org_cards", []):
+            add_entry(
+                card["title"],
+                card["price"] + " — " + card["credits"],
+                local_href("plans", lang),
+                "plans",
+                " ".join(card.get("bullets", [])) + " " + card.get("note", "") + " OCRE Azure",
+            )
+        for row in plans_content.get("individual_rows", []):
+            add_entry(
+                row["plan"],
+                row["price"] + " — " + row["audience"],
+                local_href("plans", lang),
+                "plans",
+                row["free_note"] + " " + " ".join(row.get("facts", [])),
+            )
         add_entry(content[lang]["first_commit"]["title"], content[lang]["first_commit"]["sub"], local_href("first_commit", lang), "page")
         add_entry(content[lang]["build_vs_buy"]["title"], content[lang]["build_vs_buy"]["sub"], local_href("build_vs_buy", lang), "page")
         add_entry(content[lang]["toolkit"]["title"], content[lang]["toolkit"]["sub"], local_href("toolkit", lang), "page")

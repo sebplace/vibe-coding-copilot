@@ -13,6 +13,12 @@
   --text-faint: #7a838f;
   --accent-purple: #a371f7;
   --accent-purple-strong: #8957e5;
+  /* Purples used behind white text. #a371f7 only reaches 3.35:1 with #fff, below
+     the 4.5:1 WCAG AA threshold for normal-size text, so filled controls use these
+     deeper shades instead: -on-white-text 4.6:1, -deep 5.7:1. The lighter
+     --accent-purple stays in use for borders, icons and tinted backgrounds. */
+  --accent-purple-on-white-text: #8957e5;
+  --accent-purple-deep: #7c47d4;
   --accent-blue: #58a6ff;
   --accent-green: #3fb950;
   --accent-orange: #d29922;
@@ -92,6 +98,9 @@ body {
   font-family: var(--font-sans);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  /* Long Dutch compounds and URLs would otherwise widen the page on narrow
+     phones. Only applies when a word genuinely cannot fit. */
+  overflow-wrap: break-word;
 }
 
 a { color: var(--accent-blue); text-decoration: none; }
@@ -130,11 +139,23 @@ img { max-width: 100%; display: block; }
 
 .brand-mark {
   display: flex; align-items: center; gap: 10px;
-  font-weight: 700; color: var(--text); flex-shrink: 0;
+  font-weight: 700; color: var(--text);
+  /* Must be allowed to shrink: with flex-shrink:0 the brand pushed the language
+     switch, search and hamburger past the right edge on 320-375px screens. */
+  flex-shrink: 1; min-width: 0;
 }
 .brand-mark:hover { text-decoration: none; color: var(--text); }
 .brand-mark svg { flex-shrink: 0; }
-.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
+.brand-text .b1, .brand-text .b2 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+@media (max-width: 520px) {
+  /* Not enough room for the tagline next to the language switch, search and
+     menu button. Drop it and let the site name wrap instead of being cut into
+     an ellipsis. */
+  .brand-text .b2 { display: none; }
+  .brand-text .b1 { white-space: normal; font-size: 14px; line-height: 1.15; }
+}
 .brand-text .b1 { font-size: 15px; color: var(--text); }
 .brand-text .b2 { font-size: 11px; color: var(--accent-purple); letter-spacing: .04em; text-transform: uppercase; }
 
@@ -192,7 +213,7 @@ img { max-width: 100%; display: block; }
   padding: 8px 6px 2px; color: var(--accent-blue);
 }
 
-.header-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.header-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; flex-shrink: 0; }
 
 .lang-switch { display: flex; gap: 2px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 999px; padding: 2px; }
 .lang-switch a {
@@ -200,7 +221,7 @@ img { max-width: 100%; display: block; }
   color: var(--text-muted); text-transform: uppercase;
 }
 .lang-switch a:hover { color: var(--text); text-decoration: none; }
-.lang-switch a.active { background: var(--accent-purple); color: #fff; }
+.lang-switch a.active { background: var(--accent-purple-on-white-text); color: #fff; }
 
 .mobile-nav { display: none; }
 
@@ -255,7 +276,7 @@ img { max-width: 100%; display: block; }
   padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px;
   border: 1px solid transparent; cursor: pointer;
 }
-.btn-primary { background: var(--accent-purple); color: #fff; }
+.btn-primary { background: var(--accent-purple-on-white-text); color: #fff; }
 
 @keyframes btn-copied-pulse {
   0% { transform: scale(1); }
@@ -271,7 +292,7 @@ img { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) {
   [data-prompt-copy].is-copied { animation: none; }
 }
-.btn-primary:hover { background: var(--accent-purple-strong); text-decoration: none; }
+.btn-primary:hover { background: var(--accent-purple-deep); text-decoration: none; }
 .btn-ghost { background: transparent; border-color: var(--border); color: var(--text); }
 .btn-ghost:hover { background: var(--bg-elevated); text-decoration: none; }
 
@@ -720,9 +741,14 @@ fieldset.tool-field,
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0 36px;
 }
 @media (max-width: 900px) { .feature-legend { grid-template-columns: repeat(2, 1fr); } }
+/* Long Dutch compounds ("Repository-gedefinieerde") don't fit a half-width column
+   on the narrowest phones and pushed the page a few pixels wide. */
+@media (max-width: 420px) { .feature-legend { grid-template-columns: 1fr; } }
 .feature-legend-item {
   background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
   padding: 12px 14px;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .feature-legend-item .feature-chip { margin-bottom: 6px; display: inline-block; }
 .feature-legend-item p { margin: 0; font-size: 12.5px; color: var(--text-muted); }
@@ -782,7 +808,11 @@ fieldset.tool-field,
   background: rgba(63,185,80,.08); border: 1px solid rgba(63,185,80,.3); border-radius: var(--radius-sm);
   padding: 14px 16px; font-size: 14px; color: var(--text);
   display: flex; gap: 10px; margin-top: 6px;
+  flex-wrap: wrap;
 }
+/* Without min-width:0 the text child cannot shrink below its min-content width
+   and pushed the page a few pixels wide on narrow phones. */
+.tip-box > * { min-width: 0; }
 .tip-box strong { color: var(--accent-green); flex-shrink: 0; }
 
 .lesson-nav { display: flex; justify-content: space-between; border-top: 1px solid var(--border-muted); padding-top: 24px; margin-top: 8px; }
@@ -821,6 +851,9 @@ fieldset.tool-field,
 }
 .feedback-question { margin: 0; font-size: 14px; color: var(--text-muted); flex: 1 1 auto; }
 .feedback-actions { display: flex; gap: 10px; flex: none; }
+/* The hidden attribute must win over the display rule above, otherwise the vote
+   buttons stay visible and clickable after a vote has been recorded. */
+.feedback-actions[hidden] { display: none; }
 .feedback-btn {
   font: inherit;
   font-size: 13px;
@@ -896,7 +929,15 @@ fieldset.tool-field,
 }
 @media (max-width: 640px) {
   .footer-crosspromo { flex-wrap: wrap; }
-  .footer-crosspromo-cta { margin-inline-start: 62px; }
+  .footer-crosspromo-cta {
+    margin-inline-start: 62px;
+    white-space: normal;
+    min-width: 0;
+  }
+}
+@media (max-width: 400px) {
+  /* No room for the icon-aligned indent on the narrowest phones. */
+  .footer-crosspromo-cta { margin-inline-start: 0; }
 }
 
 /* ---------------- Refresh: navigation, motion, plans, scenarios, quizzes ---------------- */
@@ -1044,6 +1085,7 @@ body.nav-panel-open {
 
 .hero-copy {
   max-width: 660px;
+  min-width: 0;
 }
 
 .hero-ctas {
@@ -1058,6 +1100,9 @@ body.nav-panel-open {
 .hero-visual {
   position: relative;
   min-height: 360px;
+  /* Grid items default to min-width:auto, which lets the nowrap typing line
+     below push the whole hero wider than a phone screen. */
+  min-width: 0;
 }
 
 .hero-orb {
@@ -2209,6 +2254,19 @@ body.nav-panel-open {
   .hero-visual {
     min-height: auto;
   }
+  /* The typing effect sizes each line in `ch` with white-space:nowrap, which
+     forces a min-content width wider than a phone screen and clipped the hero
+     (FR home measured 431px inside a 375px viewport). Below this breakpoint the
+     lines simply wrap and the animation is dropped. */
+  .hero-visual-line-text {
+    white-space: normal;
+    width: auto;
+    overflow: visible;
+    animation: none;
+  }
+  .hero-visual-line.is-last .hero-visual-line-text::after {
+    display: none;
+  }
   .quiz-card,
   .scenario-card,
   .credit-pool,
@@ -2874,6 +2932,9 @@ body.nav-panel-open {
 
 .changelog-stack {
   display: grid;
+  /* Default `auto` tracks size to min-content and let long Dutch words widen
+     the card past the viewport on 320px screens. */
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
 }
 
@@ -2883,6 +2944,7 @@ body.nav-panel-open {
 
 .changelog-entry-head {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 6px;
   margin-bottom: 10px;
 }

@@ -28,6 +28,62 @@
     "keywords": ""
   },
   {
+    "title": "En het OCRE-framework dan?",
+    "description": "GitHub Copilot staat niet als apart product in de OCRE-catalogus. Als je instelling echter al een Azure-contract heeft via een aan OCRE gekoppelde aankoopcentrale, kan Copilot Business of Enterprise doorgaans worden geactiveerd als verbruiksgebaseerde facturering op datzelfde Azure-abonnement — een onrechtstreekse maar reële route, te bevestigen bij je Azure-reseller.",
+    "href": "plans.html#ocre",
+    "category": "plans",
+    "keywords": "OCRE Azure GEANT framework procurement subscription reseller Mijn instelling wil de OCRE-route verkennen"
+  },
+  {
+    "title": "Copilot Business",
+    "description": "$19 / seat / maand — 1.900 AI credits per gebruiker per maand inbegrepen",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "Geschikt voor staff-brede uitrol met beleid en governance Codecompletions en next edit suggestions blijven onbeperkt Chat, CLI, Spaces, cloud agent en gelijkaardige agentische functies gebruiken gedeelde AI credits Sinds 22 april 2026 zijn nieuwe self-serve sign-ups tijdelijk gepauzeerd voor organisaties op GitHub Free en GitHub Team. OCRE Azure"
+  },
+  {
+    "title": "Copilot Enterprise",
+    "description": "$39 / seat / maand — 3.900 AI credits per gebruiker per maand inbegrepen",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "Enterprise-governance en admincontrole Meer inbegrepen credits dan Business Ontworpen voor brede uitrol en policy-managed omgevingen Vereist GitHub Enterprise Cloud en wordt opgezet via GitHub Sales. OCRE Azure"
+  },
+  {
+    "title": "Copilot Free",
+    "description": "$0 — Iedereen met een GitHub-account",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "Geen aanvraag nodig 2.000 completions per maand Alleen automatische modelselectie Geen premiummodellen Beperkte Chat"
+  },
+  {
+    "title": "Copilot Student",
+    "description": "$0 — Geverifieerde studenten",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "Aanvragen via GitHub Education Volledig studentenplan Sluit third-party coding agents uit Maandelijkse herverificatie Niet zelf opzegbaar zodra toegekend"
+  },
+  {
+    "title": "Copilot Pro",
+    "description": "$10 / maand — Gevorderd individueel gebruik",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "Gratis voor geverifieerde docenten en bepaalde populaire open-source-maintainers Dit is het specifieke gratis docentvoordeel Goede standaard voor individueel betaald gebruik Inclusief CLI en GitHub Copilot-app"
+  },
+  {
+    "title": "Copilot Pro+",
+    "description": "$39 / maand — Zwaarder individueel gebruik",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "Geen vaste gratis route Meer AI credits Premiummodellen Hoger plafond dan Pro"
+  },
+  {
+    "title": "Copilot Max",
+    "description": "$100 / maand — Maximale individuele capaciteit",
+    "href": "plans.html",
+    "category": "plans",
+    "keywords": "Geen vaste gratis route Hoogste individuele tier Meer AI credits Premiummodellen"
+  },
+  {
     "title": "Jouw eerste commit",
     "description": "Het meest beginner-proof pad van “ik code niet” naar “mijn code staat op GitHub” — met GitHub Copilot als gids, niet met rauwe git-syntax uit het hoofd.",
     "href": "first-commit.html",
@@ -305,7 +361,7 @@
     "description": "Les 6",
     "href": "vibe-expert.html#lesson-6",
     "category": "lesson",
-    "keywords": "Een AI-model kost iets bij elke vraag. Op betaalde Copilot-plannen voor organisaties gebruiken modelzware functies zoals Chat, CLI, Spaces, de cloud agent en vergelijkbare agentische tools AI credits — maar codecompletions en next edit suggestions blijven onbeperkt en worden niet in credits aangerekend. Business bevat 1.900 AI credits per gebruiker per maand en Enterprise bevat er 3.900, met hogere promotionele allocaties tot 1 september 2026. Die credits worden over de hele facturatie-entiteit gedeeld, zodat zware en lichte gebruikers elkaar in evenwicht houden in plaats van elk in een apart silo te zitten. Schrijf op welk deel van je workflow onbeperkte autocomplete nodig heeft en welk deel echt modelzware agentische functies vraagt. Dat onderscheid is de basis van eerlijk kostenbeheer."
+    "keywords": "Een AI-model kost iets bij elke vraag. Op betaalde Copilot-plannen voor organisaties gebruiken modelzware functies zoals Chat, CLI, Spaces, de cloud agent en vergelijkbare agentische tools AI credits — maar codecompletions en next edit suggestions blijven onbeperkt en worden niet in credits aangerekend. Business bevat 1.900 AI credits per gebruiker per maand en Enterprise bevat er 3.900. Die credits worden over de hele facturatie-entiteit gedeeld, zodat zware en lichte gebruikers elkaar in evenwicht houden in plaats van elk in een apart silo te zitten. GitHub voorziet af en toe promotionele allocaties: check de officiële plannenpagina voor wat vandaag geldt. Schrijf op welk deel van je workflow onbeperkte autocomplete nodig heeft en welk deel echt modelzware agentische functies vraagt. Dat onderscheid is de basis van eerlijk kostenbeheer."
   },
   {
     "title": "Verder dan tekst gaan",

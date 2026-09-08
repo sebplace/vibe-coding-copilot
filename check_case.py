@@ -1,8 +1,12 @@
 """Case-sensitivity link audit. Windows/NTFS is case-insensitive so href="X.HTML"
 resolving to "x.html" works locally but silently 404s on GitHub Pages (Linux, case-sensitive).
-This script flags any href/src whose case doesn't exactly match the real file on disk."""
+This script flags any href/src whose case doesn't exactly match the real file on disk.
+
+Exits with status 1 when mismatches are found so deploy.ps1 can actually block the
+publication (it checks $LASTEXITCODE)."""
 import re
 import os
+import sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PATTERN = re.compile(r'(?:href|src)="([^"#][^"]*)"')
@@ -42,3 +46,6 @@ print(f"Checked {checked} local paths across fr/nl/en")
 print(f"Case mismatches found: {len(issues)}")
 for i in issues[:40]:
     print(" -", i)
+
+if issues:
+    sys.exit(1)
