@@ -1226,5 +1226,102 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Progress backup: lets someone carry their lessons, quizzes and certificate
+  // name to another browser or device. Everything stays local — the file is
+  // produced and read in the browser, nothing is uploaded anywhere.
+  var backupPanel = document.querySelector('[data-progress-backup]');
+  if (backupPanel) {
+    var backupLang = backupPanel.getAttribute('data-lang') || pageLang;
+    var backupStatus = backupPanel.querySelector('[data-progress-backup-status]');
+    var backupPrefixes = ['vibecoding_progress_', 'vibecoding_quiz_', 'vibecoding_certificate_name_'];
+
+    var showBackupStatus = function (message, isError) {
+      if (!backupStatus) return;
+      backupStatus.textContent = message;
+      backupStatus.hidden = false;
+      backupStatus.classList.toggle('is-error', !!isError);
+    };
+
+    var collectProgress = function () {
+      var data = {};
+      try {
+        for (var i = 0; i < window.localStorage.length; i += 1) {
+          var key = window.localStorage.key(i);
+          if (!key) continue;
+          var keep = backupPrefixes.some(function (prefix) { return key.indexOf(prefix) === 0; });
+          if (keep) data[key] = window.localStorage.getItem(key);
+        }
+      } catch (_error) {
+        return {};
+      }
+      return data;
+    };
+
+    var exportButton = backupPanel.querySelector('[data-progress-export]');
+    if (exportButton) {
+      exportButton.addEventListener('click', function () {
+        var data = collectProgress();
+        if (!Object.keys(data).length) {
+          showBackupStatus(backupPanel.getAttribute('data-msg-empty') || '', true);
+          return;
+        }
+        try {
+          var payload = JSON.stringify({
+            format: 'vibe-coding-copilot-progress',
+            version: 1,
+            savedAt: new Date().toISOString(),
+            data: data
+          }, null, 2);
+          var blob = new Blob([payload], { type: 'application/json' });
+          var url = URL.createObjectURL(blob);
+          var link = document.createElement('a');
+          link.href = url;
+          link.download = 'vibe-coding-copilot-progression-' + backupLang + '.json';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          window.setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        } catch (_error) {
+          showBackupStatus(backupPanel.getAttribute('data-msg-error') || '', true);
+        }
+      });
+    }
+
+    var importInput = backupPanel.querySelector('[data-progress-import]');
+    if (importInput) {
+      importInput.addEventListener('change', function () {
+        var file = importInput.files && importInput.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function () {
+          var parsed = parseJSON(String(reader.result || ''));
+          var restored = 0;
+          if (parsed && parsed.format === 'vibe-coding-copilot-progress' && parsed.data) {
+            Object.keys(parsed.data).forEach(function (key) {
+              // Only our own keys are accepted, so an unrelated or crafted file
+              // cannot write arbitrary entries into local storage.
+              var keep = backupPrefixes.some(function (prefix) { return key.indexOf(prefix) === 0; });
+              if (!keep) return;
+              storageSet(key, String(parsed.data[key]));
+              restored += 1;
+            });
+          }
+          importInput.value = '';
+          if (!restored) {
+            showBackupStatus(backupPanel.getAttribute('data-msg-error') || '', true);
+            return;
+          }
+          showBackupStatus(backupPanel.getAttribute('data-msg-done') || '', false);
+          refreshCompletionUI();
+        };
+        reader.onerror = function () {
+          importInput.value = '';
+          showBackupStatus(backupPanel.getAttribute('data-msg-error') || '', true);
+        };
+        reader.readAsText(file);
+      });
+    }
+  }
+
   refreshCompletionUI();
 });

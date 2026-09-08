@@ -155,6 +155,21 @@
       </div>
       <p class="certificate-footnote">Certificat généré localement depuis le navigateur, sans serveur ni suivi externe.</p>
     </div>
+    <section class="progress-backup" data-progress-backup data-lang="fr"
+             data-msg-done="Progression restaurée."
+             data-msg-error="Fichier illisible ou non reconnu."
+             data-msg-empty="Rien à sauvegarder pour l’instant : coche au moins une leçon.">
+      <h2>Sauvegarder ta progression</h2>
+      <p>Ta progression est enregistrée uniquement dans ce navigateur. Vider les données du site, changer de navigateur ou d’appareil l’efface. Télécharge un petit fichier de sauvegarde pour la retrouver ailleurs.</p>
+      <div class="progress-backup-actions">
+        <button type="button" class="btn btn-ghost" data-progress-export>Télécharger ma progression</button>
+        <label class="btn btn-ghost progress-backup-import">
+          <span>Restaurer depuis un fichier</span>
+          <input type="file" accept="application/json,.json" data-progress-import hidden>
+        </label>
+      </div>
+      <p class="progress-backup-status" data-progress-backup-status role="status" aria-live="polite" hidden></p>
+    </section>
     </div>
   </section>
   </main>

@@ -869,6 +869,23 @@ fieldset.tool-field,
 .feedback-btn:hover, .feedback-btn:focus-visible { border-color: var(--accent-blue); transform: translateY(-1px); }
 .feedback-thanks { margin: 0; font-size: 14px; color: var(--accent-green); }
 
+/* ---------------- Progress backup ---------------- */
+
+.progress-backup {
+  max-width: 760px;
+  margin: 28px auto 0;
+  padding: 24px;
+  border: 1px solid var(--border-muted);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+}
+.progress-backup h2 { font-size: 1.15rem; margin: 0 0 8px; }
+.progress-backup p { margin: 0 0 16px; color: var(--text-muted); font-size: 14px; }
+.progress-backup-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.progress-backup-import { cursor: pointer; }
+.progress-backup-status { margin: 14px 0 0; font-size: 14px; color: var(--accent-green); }
+.progress-backup-status.is-error { color: var(--accent-orange); }
+
 /* ---------------- Footer ---------------- */
 
 .site-footer { border-top: 1px solid var(--border-muted); padding: 40px 0; }

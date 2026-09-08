@@ -112,6 +112,47 @@ Pour régénérer l'image après un changement de message ou de chiffres : modif
 une capture enregistrée sous `assets/og-image.png`. Les chiffres affichés (25 leçons,
 36 cas d'usage, 8 métiers) doivent rester cohérents avec le contenu réel du site.
 
+## Sauvegarde de progression
+
+La progression (leçons cochées, quiz, nom du certificat) vit dans le `localStorage` du
+navigateur. La page du certificat propose donc un export et une restauration :
+
+- **Export** : produit `vibe-coding-copilot-progression-<lang>.json` (format
+  `vibe-coding-copilot-progress`, version 1) à partir des clés `vibecoding_progress_*`,
+  `vibecoding_quiz_*` et `vibecoding_certificate_name_*`.
+- **Restauration** : n'accepte **que** ces trois préfixes. Un fichier contenant d'autres
+  clés voit celles-ci ignorées, et un fichier au format inconnu est refusé avec un message.
+
+Tout se passe dans le navigateur : aucun compte, aucun serveur, aucun envoi.
+
+## Conditions de réutilisation
+
+`LICENSE.md` sépare volontairement deux natures de travail : **MIT** pour le code et le
+générateur, **CC BY 4.0** pour le contenu pédagogique, afin que les établissements puissent
+adapter le matériel en citant la source. Le fichier rappelle aussi ce qui n'est pas couvert
+(marques GitHub/Microsoft, logo GitHub, absence d'affiliation, exactitude des tarifs).
+Ce choix est réversible en un commit s'il ne convient pas.
+
+## Dette technique — état réel
+
+Un nettoyage vérifié a été fait le 08/09/2026 :
+
+- `generate_site.py` contenait encore **~517 lignes** de l'ancien moteur de rendu (16
+  fonctions `esc`, `render_home`, `render_course`, `render_root_index`…), entièrement
+  remplacées par `site_refresh.py` et jamais appelées — `main()` ne fait qu'appeler
+  `site_refresh.generate_site()`.
+- `site_refresh.py` contenait `nav_course_group_html`, un **doublon** du menu déroulant des
+  parcours jamais appelé (le vrai balisage vient d'ailleurs), et un `slugify` inutilisé.
+
+**Méthode de vérification à réutiliser pour tout nettoyage futur** : prendre l'empreinte
+SHA-256 des 67 fichiers générés, supprimer, régénérer, comparer. La sortie doit être
+strictement identique — c'est ce qui a été constaté ici.
+
+Ce qui reste (`site_refresh.py` ≈ 5 880 lignes) est du contenu et du rendu réellement
+utilisés. Une réécriture complète n'apporterait rien de visible aux visiteurs et ferait
+courir un risque de régression sur 58 pages : à faire seulement de façon progressive, et
+toujours avec la comparaison d'empreintes ci-dessus.
+
 ## Architecture — le point le plus important à comprendre
 
 Il y a **deux fichiers Python, mais un seul est réellement le moteur de rendu** :

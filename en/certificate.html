@@ -155,6 +155,21 @@
       </div>
       <p class="certificate-footnote">Certificate generated locally in the browser, with no server-side tracking.</p>
     </div>
+    <section class="progress-backup" data-progress-backup data-lang="en"
+             data-msg-done="Progress restored."
+             data-msg-error="File unreadable or not recognised."
+             data-msg-empty="Nothing to back up yet — tick at least one lesson first.">
+      <h2>Back up your progress</h2>
+      <p>Your progress is stored in this browser only. Clearing site data, switching browser or changing device wipes it. Download a small backup file to carry it elsewhere.</p>
+      <div class="progress-backup-actions">
+        <button type="button" class="btn btn-ghost" data-progress-export>Download my progress</button>
+        <label class="btn btn-ghost progress-backup-import">
+          <span>Restore from a file</span>
+          <input type="file" accept="application/json,.json" data-progress-import hidden>
+        </label>
+      </div>
+      <p class="progress-backup-status" data-progress-backup-status role="status" aria-live="polite" hidden></p>
+    </section>
     </div>
   </section>
   </main>

@@ -155,6 +155,21 @@
       </div>
       <p class="certificate-footnote">Certificaat lokaal in de browser gegenereerd, zonder servertracking.</p>
     </div>
+    <section class="progress-backup" data-progress-backup data-lang="nl"
+             data-msg-done="Voortgang hersteld."
+             data-msg-error="Bestand onleesbaar of niet herkend."
+             data-msg-empty="Nog niets om te bewaren — vink eerst minstens één les aan.">
+      <h2>Je voortgang bewaren</h2>
+      <p>Je voortgang staat alleen in deze browser. Sitegegevens wissen, van browser wisselen of een ander toestel gebruiken wist alles. Download een klein back-upbestand om ze elders terug te vinden.</p>
+      <div class="progress-backup-actions">
+        <button type="button" class="btn btn-ghost" data-progress-export>Mijn voortgang downloaden</button>
+        <label class="btn btn-ghost progress-backup-import">
+          <span>Herstellen vanuit een bestand</span>
+          <input type="file" accept="application/json,.json" data-progress-import hidden>
+        </label>
+      </div>
+      <p class="progress-backup-status" data-progress-backup-status role="status" aria-live="polite" hidden></p>
+    </section>
     </div>
   </section>
   </main>

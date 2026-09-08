@@ -344,6 +344,13 @@ PAGE_UI = {
         "certificate_tracks": "Parcours validés",
         "certificate_date": "Date",
         "certificate_footer": "Certificat généré localement depuis le navigateur, sans serveur ni suivi externe.",
+        "backup_title": "Sauvegarder ta progression",
+        "backup_intro": "Ta progression est enregistrée uniquement dans ce navigateur. Vider les données du site, changer de navigateur ou d’appareil l’efface. Télécharge un petit fichier de sauvegarde pour la retrouver ailleurs.",
+        "backup_export": "Télécharger ma progression",
+        "backup_import": "Restaurer depuis un fichier",
+        "backup_done": "Progression restaurée.",
+        "backup_error": "Fichier illisible ou non reconnu.",
+        "backup_empty": "Rien à sauvegarder pour l’instant : coche au moins une leçon.",
         "search_open": "Ouvrir la recherche",
         "search_title": "Rechercher dans le site",
         "search_placeholder": "Chercher une leçon, un cas d’usage, un terme du glossaire…",
@@ -400,6 +407,13 @@ PAGE_UI = {
         "certificate_tracks": "Completed tracks",
         "certificate_date": "Date",
         "certificate_footer": "Certificate generated locally in the browser, with no server-side tracking.",
+        "backup_title": "Back up your progress",
+        "backup_intro": "Your progress is stored in this browser only. Clearing site data, switching browser or changing device wipes it. Download a small backup file to carry it elsewhere.",
+        "backup_export": "Download my progress",
+        "backup_import": "Restore from a file",
+        "backup_done": "Progress restored.",
+        "backup_error": "File unreadable or not recognised.",
+        "backup_empty": "Nothing to back up yet — tick at least one lesson first.",
         "search_open": "Open search",
         "search_title": "Search the site",
         "search_placeholder": "Search for a lesson, use case, glossary term…",
@@ -456,6 +470,13 @@ PAGE_UI = {
         "certificate_tracks": "Afgeronde trajecten",
         "certificate_date": "Datum",
         "certificate_footer": "Certificaat lokaal in de browser gegenereerd, zonder servertracking.",
+        "backup_title": "Je voortgang bewaren",
+        "backup_intro": "Je voortgang staat alleen in deze browser. Sitegegevens wissen, van browser wisselen of een ander toestel gebruiken wist alles. Download een klein back-upbestand om ze elders terug te vinden.",
+        "backup_export": "Mijn voortgang downloaden",
+        "backup_import": "Herstellen vanuit een bestand",
+        "backup_done": "Voortgang hersteld.",
+        "backup_error": "Bestand onleesbaar of niet herkend.",
+        "backup_empty": "Nog niets om te bewaren — vink eerst minstens één les aan.",
         "search_open": "Zoeken openen",
         "search_title": "Zoek in de site",
         "search_placeholder": "Zoek een les, use case, term uit het glossarium…",
@@ -3712,10 +3733,6 @@ def generate_site(content, root, langs, lang_label):
             return ""
         return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
-    def slugify(value):
-        normalized = unicodedata.normalize("NFKD", str(value)).encode("ascii", "ignore").decode("ascii")
-        return re.sub(r"[^a-z0-9]+", "-", normalized.lower()).strip("-") or "item"
-
     def json_html(data):
         return json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
 
@@ -3856,22 +3873,7 @@ def generate_site(content, root, langs, lang_label):
             links.append(f'<a class="{active}" href="{page_href(other, page_key)}">{lang_label[other]}</a>')
         return f'<div class="{cls}">' + "".join(links) + "</div>"
 
-    def nav_course_group_html(lang, track_key):
-        track = content[lang]["tracks"][track_key]
-        nav = content[lang]["nav"]
-        href = local_href(track_key, lang)
-        items = "".join(
-            f'<li><a href="{href}#lesson-{i+1}"><span>{i+1}</span><strong>{esc(lesson["title"])}</strong></a></li>'
-            for i, lesson in enumerate(track["lessons"])
-        )
-        return f"""<div class="nav-course-group">
-      <a class="nav-trigger" href="{href}">{esc(nav[track_key])}</a>
-      <div class="nav-lesson-panel">
-        <div class="nav-lesson-panel-head"><span>{esc(nav["all_lessons"])}</span><strong>{esc(track["level_label"])}</strong></div>
-        <ol class="nav-lesson-list">{items}</ol>
-        <a class="nav-lesson-overview" href="{href}">{esc(nav["view_route"])}<span aria-hidden="true">→</span></a>
-      </div>
-    </div>"""
+
 
     def nav_courses_menu_html(lang):
         nav = content[lang]["nav"]
@@ -5423,6 +5425,21 @@ def generate_site(content, root, langs, lang_label):
       </div>
       <p class="certificate-footnote">{esc(ui["certificate_footer"])}</p>
     </div>
+    <section class="progress-backup" data-progress-backup data-lang="{lang}"
+             data-msg-done="{esc(ui["backup_done"])}"
+             data-msg-error="{esc(ui["backup_error"])}"
+             data-msg-empty="{esc(ui["backup_empty"])}">
+      <h2>{esc(ui["backup_title"])}</h2>
+      <p>{esc(ui["backup_intro"])}</p>
+      <div class="progress-backup-actions">
+        <button type="button" class="btn btn-ghost" data-progress-export>{esc(ui["backup_export"])}</button>
+        <label class="btn btn-ghost progress-backup-import">
+          <span>{esc(ui["backup_import"])}</span>
+          <input type="file" accept="application/json,.json" data-progress-import hidden>
+        </label>
+      </div>
+      <p class="progress-backup-status" data-progress-backup-status role="status" aria-live="polite" hidden></p>
+    </section>
     </div>
   </section>
   </main>"""
